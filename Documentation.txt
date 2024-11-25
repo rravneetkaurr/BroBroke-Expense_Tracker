@@ -1,0 +1,201 @@
+Documentation
+---------------------------------------------------------------
+* For setting up application locally , you can read the readme file .
+
+Overview:
+
+This API handles user authentication, including user login and registration.
+
+Base URL:
+
+Assuming the server is hosted at http://example.com, the base URL for these endpoints would be:
+
+http://example.com/api/v1
+
+Endpoints:
+
+1. Login User
+
+- Endpoint: POST users/login
+- Description: Allows an existing user to log in.
+- Request:
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+    ```json
+    {
+      "email": "example_user@gmail.com",
+      "password": "password123"
+    }
+    ```
+- Response:
+  - Success (200 OK):
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+      "user": {
+        "id": "123",
+        "email": "example_user@gmail.com"
+      }
+    }
+    ```
+  - Error (401 Unauthorized):
+    ```json
+    {
+      "error": "Invalid credentials"
+    }
+    ```
+
+2. Register User
+
+- Endpoint: POST users/register
+- Description: Allows a new user to register.
+- Request:
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+    ```json
+    {
+      "name": "new_user",
+      "email": "new_user@gmail.com",
+      "password": "new_password"
+    }
+    ```
+- Response:
+  - Success (201 Created):
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+      "user": {
+        "id": "456",
+        "username": "new_user"
+      }
+    }
+    ```
+  - Error (400 Bad Request):
+    ```json
+    {
+      "error": "Username must be unique"
+    }
+    ```
+
+
+
+
+### This API handles transactions, including retrieving, adding, editing, deleting transactions, and exporting monthly reports.
+
+Endpoints:
+
+1. Get All Transactions
+
+- Endpoint: GET /transactions/get-transactions
+- Description: Retrieves transactions based on specified filters.
+- Request:
+  - Body:
+    {
+      "frequency": "daily",
+      "selectedDate": ["start_date", "end_date"],
+      "type": "expense",
+      "userid": "user_id"
+    }
+- Response:
+  - Success (200 OK):
+    [
+      {
+        "_id": "transaction_id",
+        "date": "transaction_date",
+        "type": "transaction_type",
+        "amount": "transaction_amount",
+        "category": "transaction_category"
+      },
+      // ... other transactions
+    ]
+  - Error (500 Internal Server Error):
+    {
+      "error": "Internal Server Error"
+    }
+
+2. Add Transaction
+
+- Endpoint: POST /transactions/add-transaction
+- Description: Adds a new transaction.
+- Request:
+  - Body:
+    {
+      // Transaction details
+    }
+- Response:
+  - Success (201 Created):
+    {
+      "message": "Transaction Created"
+    }
+  - Error (500 Internal Server Error):
+    {
+      "error": "Internal Server Error"
+    }
+
+3. Edit Transaction
+
+- Endpoint: PUT /transactions/edit-transaction
+- Description: Edits an existing transaction.
+- Request:
+  - Body:
+    {
+      "transacationId": "transaction_id",
+      "payload": {
+        // Updated transaction details
+      }
+    }
+- Response:
+  - Success (200 OK):
+    {
+      "message": "Edit Successfully"
+    }
+  - Error (500 Internal Server Error):
+    {
+      "error": "Internal Server Error"
+    }
+
+4. Delete Transaction
+
+- Endpoint: DELETE /transactions/delete-transaction
+- Description: Deletes an existing transaction.
+- Request:
+  - Body:
+    {
+      "transacationId": "transaction_id"
+    }
+- Response:
+  - Success (200 OK):
+    {
+      "message": "Transaction Deleted!"
+    }
+  - Error (500 Internal Server Error):
+    {
+      "error": "Internal Server Error"
+    }
+
+5. Export Monthly Report
+
+- Endpoint: POST /transactions/export-monthly-report
+- Description: Exports a monthly report in Excel format.
+- Request:
+  - Body:
+    {
+      "userid": "user_id"
+    }
+- Response:
+  - Success (Excel file download):
+    - Excel file with the last month's transaction details.
+  - Error (500 Internal Server Error):
+    {
+      "error": "Internal Server Error"
+    }
+
+
+
+Additional Notes:
+
+- The API expects JSON data in the request body.
+- Ensure proper error handling on the client side based on the status codes and response formats.
+- Use the received JWT token for subsequent authenticated requests.

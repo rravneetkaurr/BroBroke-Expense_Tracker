@@ -1,0 +1,43 @@
+.register-page {
+  height: 75vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.register-form h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+  color: #344265;
+}
+
+.register-form .ant-form-item-label label {
+  color: #344265 !important;
+}
+.register-form button {
+  background-color: #006400;
+  color: white;
+  outline: none;
+}
+.register-form button:hover {
+  background-color: black;
+  color: white;
+}
+.register-form a {
+  color: #344265 !important;
+}
+
+.register-form a:hover {
+  color: black !important;
+}

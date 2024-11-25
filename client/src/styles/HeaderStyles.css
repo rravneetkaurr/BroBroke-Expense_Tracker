@@ -1,0 +1,43 @@
+/* Navbar styles */
+.navbar {
+  background-color: #f8f9fa; /* Light gray background */
+  border-bottom: 1px solid #ddd; /* Subtle bottom border */
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00796b; /* Teal branding */
+}
+
+.navbar-brand:hover {
+  color: #005f54; /* Darker teal */
+  text-decoration: none;
+}
+
+/* Spacing Between Buttons */
+.split-expense-btn {
+  margin-right: 10px; /* Add space between Split-Expense and Logout */
+}
+
+/* Danger Buttons (Split-Expense & Logout) */
+.btn-danger {
+  color: #fff;
+  background-color: #5F9EA0; /* Red background */
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color:#088F8F; /* Darker red on hover */
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  color: #007bff; /* Teal links */
+  font-size: 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #005f54; /* Darker teal on hover */
+}
